@@ -19,7 +19,7 @@ console.log(Count);
 console.log(process.env.MONGO_URI);
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log('Connected to MongoDB'))
+    .then(() => (app.listen(port, () => console.log(`Server listening on port ${port}`))))
     .catch((err) => console.error(err));
 
 app.use(bodyParser.json());
@@ -96,6 +96,3 @@ const increaseCount = async (id) => {
         console.error(err); // Handle error gracefully
     }
 };
-
-// Start server
-app.listen(port, () => console.log(`Server listening on port ${port}`));
